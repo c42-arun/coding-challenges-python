@@ -1,7 +1,7 @@
 '''
 Greedy approach
     - 1 loops
-    - O(1) space (or O(n)?)
+    - O(1) space (or O(n)?): as it always uses two arrays of 3 items each
     - O(n) time
 '''
 
@@ -54,7 +54,8 @@ def find_max_prod(min_list, max_list):
 
 
 if __name__ == "__main__":
-    int_list = [15, 10, 7, 8, 5, 11, 12, 9, 6, -12, -13]
+    int_list = [-10, -10, 3, 2]
+    # int_list = [15, 10, 7, 8, 5, 11, 12, 9, 6, -12, -13]
     # int_list = [1, 2, 5, 6, 7, 8, 9, 10, 4, 77]
 
     max_list = int_list[:3]
