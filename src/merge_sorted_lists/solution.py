@@ -11,25 +11,20 @@ def merge_lists(my_list, alices_list):
     alice_index = 0
 
     for i in range(len(result)):
-        # if my_index is exhausted, take values from alices_list
-        if (my_index >= len(my_list)):
-            result[i] = alices_list[alice_index]
-            alice_index += 1
+        mine_exhausted = my_index >= len(my_list)
+        alice_exhausted = alice_index >= len(alices_list)
+
+        # Next comes from Mine if
+        #   1. Mine is not exhausted AND
+        #       2. Alice is exhausted OR
+        #       3. Mine's is smaller than Alice's
+        if (not mine_exhausted and 
+                (alice_exhausted or my_list[my_index] < alices_list[alice_index])):
+            result[i] = my_list[my_index]
+            my_index += 1
         
-        # if alices_list is exhausted, take values from my_index
-        elif (alice_index >= len(alices_list)):
-            result[i] = my_list[my_index]
-            my_index += 1
-
-        # if my_list[my_index] is less than alices_list[alice_index],
-        #   take my_list[my_index] & increment my_index
-        elif (my_list[my_index] < alices_list[alice_index]):
-            result[i] = my_list[my_index]
-            my_index += 1
-
-        # if alices_list[alice_index] is less than my_list[my_index],
-        #   take alices_list[alice_index] & increment alice_index
-        elif (my_list[my_index] > alices_list[alice_index]):
+        # else comes from my Alice
+        else:
             result[i] = alices_list[alice_index]
             alice_index += 1
 
