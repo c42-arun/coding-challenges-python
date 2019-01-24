@@ -28,34 +28,42 @@ def reverse_words(message):
     word_start = 0
     a_word = []
 
-    for counter, letter in enumerate(msg):
+    for counter, letter in enumerate(message):
         if (letter == ' '):
             reverse(a_word)
 
             word_index = 0
             for w in a_word:
-                msg[word_start + word_index] = w
+                message[word_start + word_index] = w
                 word_index += 1
+            message[word_start + word_index] = letter
 
             word_start = counter + 1
+            a_word = []
         else:
             a_word.append(letter)
+        
+        counter += 1
 
+    reverse(a_word)
+    word_index = 0
+    for w in a_word:
+        message[word_start + word_index] = w
+        word_index += 1
 
-
-if __name__ == "__main__":
-    msg = list('thief cake')
+# if __name__ == "__main__":
+#     msg = list('ryummy is cake bundt chocolate')
     
-    print(msg)
+#     # print(msg)
 
-    reverse_words(msg)
+#     reverse_words(msg)
 
-    print(msg)
+#     print(msg)
 
 
 
 # Tests
-'''
+
 class Test(unittest.TestCase):
 
     def test_one_word(self):
@@ -96,4 +104,3 @@ class Test(unittest.TestCase):
 
 
 unittest.main(verbosity=2)
-'''
